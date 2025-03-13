@@ -7,6 +7,7 @@ import { useState } from "react";
 import Hamburger from "hamburger-react";
 import { useParams, usePathname } from "next/navigation";
 import { Socials } from "../socials/socials";
+import { BiSolidDownArrow } from "react-icons/bi";
 
 interface HeaderProps {
   props: {
@@ -38,7 +39,7 @@ export const Navigation = ({ props }: HeaderProps) => {
   const path = usePathname();
   return (
     <nav
-      className={`fixed w-full items-center flex justify-between top-0 px-5 lg:px-14 py-6 z-30`}
+      className={`fixed w-full items-center flex justify-between top-0 px-5 lg:pl-14 py-6 z-30 lg:mt-10`}
       style={{
         background: `${
           props.transparent ? "transparent" : props.header_bg_color.color
@@ -56,7 +57,7 @@ export const Navigation = ({ props }: HeaderProps) => {
       </Link>
 
       <div className={`hidden lg:flex`}>
-        <div>
+        <div className="flex">
           {props.meny.map((item: LinkTypes) => {
             return (
               <Link
@@ -68,11 +69,17 @@ export const Navigation = ({ props }: HeaderProps) => {
                       ? ""
                       : props.header_text_color.color,
                 }}
-                className={`${
-                  router.slug === item.link.cached_url && "active"
-                }  px-5 py-2`}
+                className={`flex items-center gap-2 px-5 py-2 font-bold text-[18px] ${
+                  router.slug === item.link.cached_url ? "active" : ""
+                }`}
               >
                 {item.title}
+                {item.submenu_restaurant && (
+                  <BiSolidDownArrow aria-hidden="true" fontSize={14} />
+                )}
+                {item.submenu_activities && (
+                  <BiSolidDownArrow aria-hidden="true" fontSize={14} />
+                )}
               </Link>
             );
           })}

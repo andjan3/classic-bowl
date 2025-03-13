@@ -6,4 +6,6 @@ export interface LinkTypes {
   title: string;
   _uid: string;
   secondary_color?: boolean;
+  submenu_restaurant?: boolean;
+  submenu_activities?: boolean;
 }

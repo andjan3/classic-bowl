@@ -1,10 +1,10 @@
-$primary: #121212;
+$primary: #1e40af;
 $primary-text: #fff;
 $primary-hover: #303000;
 $forground: #f8f8f8;
 
-$secondary: #fff;
-$secondary-text: $primary;
+$secondary: rgba(255, 255, 255, 0);
+$secondary-text: $primary-text;
 $secondary-hover: #303000;
 
 $h1: 85px;
@@ -14,6 +14,7 @@ $h2-mobile: 30px;
 $h3: 22px;
 $h3-mobile: 20px;
 $p: 20px;
+$button-text: 16px;
 
 h1 {
   font-size: $h1;
@@ -39,11 +40,15 @@ h3 {
 }
 
 p,
-span,
-a {
+span {
   font-size: $p;
 }
 
+a {
+  font-size: $button-text;
+  text-transform: uppercase;
+  font-style: italic;
+}
 // Buttons
 
 .primary-button {
@@ -61,6 +66,7 @@ a {
   color: $secondary-text;
   padding: 20px 25px;
   transition: all 0.3s ease-in-out;
+  border: 1px solid white;
 
   &:hover {
     background: $secondary-hover;

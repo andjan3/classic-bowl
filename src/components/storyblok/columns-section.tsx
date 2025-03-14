@@ -1,8 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { render } from "storyblok-rich-text-react-renderer";
+import { HiOutlineArrowSmallRight } from "react-icons/hi2";
 
 export const Columns = ({ blok }: any) => {
+  console.log(blok);
   return (
     <div className="container-section p-container my-14">
       <div
@@ -23,7 +26,7 @@ export const Columns = ({ blok }: any) => {
             }`}
             key={item._uid}
           >
-            <h2>{item.title}</h2>
+            <h2 className=" text-[35px]">{item.title}</h2>
             <span
               className={`${blok.half_width && "lg:max-w-[50%]"} ${
                 blok?.text_center && "mx-auto"
@@ -31,6 +34,13 @@ export const Columns = ({ blok }: any) => {
             >
               {render(item.content)}
             </span>
+            <Link
+              href={item?.link?.cached_url || ""}
+              className="flex gap-2 items-center font-extrabold"
+            >
+              <div>{item?.link_title}</div>
+              <HiOutlineArrowSmallRight />
+            </Link>
           </div>
         ))}
       </div>
